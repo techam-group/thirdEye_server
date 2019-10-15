@@ -1,0 +1,36 @@
+{
+  "name": "thirdeye_server",
+  "version": "1.0.0",
+  "description": "Backend services for the thirdeye project powered with node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node fly.js",
+    "dev": "nodemon src/fly.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techam-group/thirdEye_server.git"
+  },
+  "keywords": [
+    "drone",
+    "survillance",
+    "security",
+    "node",
+    "hacking"
+  ],
+  "author": "Favour George, C",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/techam-group/thirdEye_server/issues"
+  },
+  "homepage": "https://github.com/techam-group/thirdEye_server#readme",
+  "dependencies": {
+    "express": "4.17.1",
+    "lodash": "4.17.15",
+    "socket.io": "2.3.0",
+    "waait": "1.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
