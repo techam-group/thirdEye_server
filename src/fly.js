@@ -7,18 +7,22 @@ const throttle = require('lodash/throttle');
 const commandDelays = require('./lib/commandDelays');
 
 const PORT = 8889;
-const HOST = '192.168.10.1';
 const DS_PORT = 8890;
+const HOST = '192.168.10.1';
 
 const drone = dgram.createSocket('udp4');
-const droneState = dgram.createSocket('udp4');
-
 drone.bind(PORT);
-droneState.bind(DS_PORT);
+
+const _3rdEye = dgram.createSocket('udp4');
+_3rdEye.bind(DS_PORT);
 
 drone.on('message', message => {
   console.log(`🤖 : ${message}`);
 });
+
+_3rdEye.on('message', message => {
+  console.log(`🤖 : ${message}`)
+})
 
 function handleError(err) {
   if (err) {
@@ -50,7 +54,6 @@ async function go() {
   }
 
   console.log('done!')
-  console.log('3rdEye has landed')
 }
 
 go()
