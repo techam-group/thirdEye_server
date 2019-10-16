@@ -4,7 +4,7 @@ const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const throttle = require('lodash/throttle');
-const commandDelays = require('./lib/commandDelays');
+const commandDelays = require('./lib/js/commandDelays');
 
 const PORT = 8889;
 const DS_PORT = 8890;
