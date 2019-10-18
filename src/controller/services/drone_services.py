@@ -34,6 +34,7 @@ def display_msg(message):
 def recv_resp():
     try:
         idx = 0
+
         while True:
             idx += 1
             resp, ip_addr = tello.recvfrom(1024)

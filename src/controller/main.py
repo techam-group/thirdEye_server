@@ -6,7 +6,7 @@ from time import sleep
 'takeoff', 'land'
 '''
 
-command_list = ['command', 'battery?', 'takeoff', 'land']
+command_list = ['command', 'battery?']
 command_len = len(command_list)
 
 for i in range(command_len):
@@ -14,7 +14,7 @@ for i in range(command_len):
     waait = delays.command_delays[command]
 
     ds.send_msg(command)
-    ds.recv_resp()
+    # ds.recv_resp()
 
     sleep(waait)
 
