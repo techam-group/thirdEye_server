@@ -4,6 +4,6 @@ This will be an amazing project.
 
 ## Tools
 
-- DJI Telllo dron
+- DJI Tello drone
 - A laptop
 - A thinking cap
