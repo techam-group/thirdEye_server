@@ -2,6 +2,10 @@ from services import delays
 from services import drone_services as ds
 from time import sleep
 
+'''
+'takeoff', 'land'
+'''
+
 command_list = ['command', 'battery?', 'takeoff', 'land']
 command_len = len(command_list)
 
@@ -15,4 +19,3 @@ for i in range(command_len):
     sleep(waait)
 
 ds.close_sock()
-

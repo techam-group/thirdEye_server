@@ -1,5 +1,6 @@
 # _3rd_eyes services
 import socket
+from time import sleep
 
 # Setup the ports and addresses for local communication
 local_ip = ''
@@ -32,9 +33,18 @@ def display_msg(message):
 
 def recv_resp():
     try:
-        resp, ip_addr = tello.recvfrom(9000)
-        message = "Received message: " + resp.decode(encoding="utf-8") + " from Tello with IP: " + str(ip_addr)
-        display_msg(message)
+        idx = 0
+        while True:
+            idx += 1
+            resp, ip_addr = tello.recvfrom(1024)
+
+            if resp == 'ok':
+                continue
+
+            tello_state = resp.decode(encoding='utf-8')
+            message = 'Tello State:\n' + tello_state.replace(';', ';\n')
+            sleep(3)
+            display_msg(message)
     except Exception as e:
         print("Error receiving: " + str(e))
 
