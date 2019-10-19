@@ -14,7 +14,7 @@ for i in range(command_len):
     waait = delays.command_delays[command]
 
     ds.send_msg(command)
-    # ds.recv_resp()
+    ds.recv_resp()
 
     sleep(waait)
 

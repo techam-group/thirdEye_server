@@ -18,7 +18,7 @@ _3rd_eye_addr = (_3rd_eye_ip, _3rd_eye_port)
 def send_msg(message):
     try:
         tello.sendto(message.encode(), _3rd_eye_addr)
-        print('Sending ' + message)
+        print('Sent ' + message)
     except Exception as e:
         print('Error sending: ' + str(e))
 
@@ -31,23 +31,35 @@ def display_msg(message):
         print('Error receiving message: ' + str(e))
 
 
+# def recv_resp():
+#     try:
+#         idx = 0
+#
+#         while True:
+#             idx += 1
+#             resp, ip_addr = tello.recvfrom(1024)
+#
+#             if resp == 'ok':
+#                 continue
+#
+#             tello_state = resp.decode(encoding='utf-8')
+#             message = 'Tello State:\n' + tello_state.replace(';', ';\n')
+#             sleep(3)
+#             display_msg(message)
+#     except Exception as e:
+#         print("Error receiving: " + str(e))
+
 def recv_resp():
     try:
-        idx = 0
+        resp, ip_addr = tello.recvfrom(1024)
 
-        while True:
-            idx += 1
-            resp, ip_addr = tello.recvfrom(1024)
+        tello_state = resp.decode(encoding='utf-8')
+        message = 'Tello State:\n' + tello_state.replace(';', ';\n')
+        display_msg(message)
 
-            if resp == 'ok':
-                continue
-
-            tello_state = resp.decode(encoding='utf-8')
-            message = 'Tello State:\n' + tello_state.replace(';', ';\n')
-            sleep(3)
-            display_msg(message)
     except Exception as e:
         print("Error receiving: " + str(e))
+        close_sock()
 
 
 def close_sock():
