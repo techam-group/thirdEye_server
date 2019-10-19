@@ -1,6 +1,5 @@
 # _3rd_eyes services
 import socket
-from time import sleep
 
 
 class Drone:
