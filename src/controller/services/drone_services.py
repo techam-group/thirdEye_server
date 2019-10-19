@@ -31,24 +31,6 @@ def display_msg(message):
         print('Error receiving message: ' + str(e))
 
 
-# def recv_resp():
-#     try:
-#         idx = 0
-#
-#         while True:
-#             idx += 1
-#             resp, ip_addr = tello.recvfrom(1024)
-#
-#             if resp == 'ok':
-#                 continue
-#
-#             tello_state = resp.decode(encoding='utf-8')
-#             message = 'Tello State:\n' + tello_state.replace(';', ';\n')
-#             sleep(3)
-#             display_msg(message)
-#     except Exception as e:
-#         print("Error receiving: " + str(e))
-
 def recv_resp():
     try:
         resp, ip_addr = tello.recvfrom(1024)
