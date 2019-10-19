@@ -2,11 +2,17 @@
 import socket
 
 
-# Setup the ports and addresses for local communication
-local_ip = ''
-local_port = 8890
-tello = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-tello.bind((local_ip, local_port))
+class Drone:
+    def __init__(self, name="third_eye"):
+        """
+        This is an instance of our Third_Eye drone. We are using Tello Drone for testing, but hopefully you should run
+        this code with any drone out there.
+        :type name: string
+        """
+        self.name = name
+        self.local_ip = ''
+        self.local_port = 8890
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
         self.drone_ip = '192.168.10.1'
         self.drone_port = 8889
