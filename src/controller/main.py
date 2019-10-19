@@ -1,21 +1,25 @@
-from services import delays
-from services import drone_services as ds
+from src.controller.services.delays import command_delays as delays
+from src.controller.services.drone_services import Drone
 from time import sleep
 
 '''
 'takeoff', 'land'
 '''
 
+# Instantiate new Drone
+tello = Drone('Tello')
+
 command_list = ['command', 'battery?']
 command_len = len(command_list)
 
+
 for i in range(command_len):
     command = command_list[i]
-    waait = delays.command_delays[command]
+    wait = delays[command]
 
-    ds.send_msg(command)
-    ds.recv_resp()
+    tello.send_msg(command)
+    tello.recv_resp()
 
-    sleep(waait)
+    sleep(wait)
 
-ds.close_sock()
+tello.close_sock()
