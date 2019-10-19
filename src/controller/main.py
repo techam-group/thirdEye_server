@@ -3,14 +3,14 @@ from src.controller.services.drone_services import Drone
 from time import sleep
 
 '''
-'takeoff', 'land'
+'takeoff', 'land', 'time?', 'speed?',
 '''
 
-# Instantiate new Drone
-tello = Drone('Tello')
-
-command_list = ['command', 'battery?']
+command_list = ['command', 'battery?', 'takeoff', 'land']
 command_len = len(command_list)
+
+# Instantiate new Drone
+tello = Drone('Tello', command_len)
 
 
 for i in range(command_len):
@@ -18,8 +18,9 @@ for i in range(command_len):
     wait = delays[command]
 
     tello.send_msg(command)
-    tello.recv_resp()
+    tello.stream_resp()
 
     sleep(wait)
+
 
 tello.close_sock()
