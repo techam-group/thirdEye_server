@@ -6,7 +6,7 @@ from time import sleep
 'takeoff', 'land', 'time?', 'speed?',
 '''
 
-command_list = ['command', 'battery?', 'takeoff', 'land']
+command_list = ['command', 'battery?']
 command_len = len(command_list)
 
 # Instantiate new Drone
@@ -24,3 +24,7 @@ for i in range(command_len):
 
 
 tello.close_sock()
+
+
+if __name__ == '__main__':
+    print('We got called')
