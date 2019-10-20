@@ -68,6 +68,10 @@ class Drone:
             self.close_sock()
 
     def close_sock(self):
+        """
+        close drone's communication socket
+        :return:
+        """
         return self.sock.close()
 
 
