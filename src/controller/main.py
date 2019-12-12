@@ -7,7 +7,7 @@ import sys
 'takeoff', 'land', 'time?', 'speed?',
 '''
 
-command_list = ['command', 'battery?']
+command_list = ['command', 'battery?', 'takeoff', 'land']
 command_len = len(command_list)
 
 print(command_list)
