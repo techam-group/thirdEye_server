@@ -1,4 +1,4 @@
-# _3rd_eyes services
+# _3rd_eyes servicess
 import socket
 
 
