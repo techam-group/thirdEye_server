@@ -29,6 +29,6 @@ for i in range(command_len):
 tello.close_sock()
 
 
-# if __name__ == '__main__':
-#     print('We got called')
-#     sys.stdout.flush()
+if __name__ == '__main__':
+    print('We got called')
+    sys.stdout.flush()
