@@ -3,15 +3,20 @@ from services.drone_services import Drone
 from time import sleep
 import sys
 
-command_args = sys.argv
-argument_list = command_args[1:]
-command_len = len(argument_list)
+'''
+'takeoff', 'land', 'time?', 'speed?',
+'''
+
+command_list = ['command', 'battery?', 'takeoff', 'land']
+command_len = len(command_list)
+
 
 # Instantiate new Drone
-tello = Drone('Tello')
+tello = Drone('Tello', command_len)
+
 
 for i in range(command_len):
-    command = argument_list[i]
+    command = command_list[i]
     wait = delays[command]
 
     tello.send_msg(command)
