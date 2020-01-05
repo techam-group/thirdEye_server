@@ -8,16 +8,17 @@ const { sendMessage } = require('./src/fly');
 
 // Setup IO for server
 io.on('connection', socket => {
-  socket.on('command', command => {
-    // console.log('command Sent from browser =>', command);
-    sendMessage('command')
-    sendMessage(command)
-    // drone.send(command, 0, command.length, PORT, HOST, handleError);
+  socket.emit('status', 'CONNECTED');
 
-    // socket.on('disconnect', () => console.log('client disconnected'))
+  socket.on('command', async command => {
+    await sendMessage('command');
+    const data = await sendMessage(command);
+    console.log('data: ', data);
+
+    socket.emit('data', data);
   });
 
-  socket.emit('status', 'CONNECTED');
+  socket.on('disconnect', () => console.log('client disconnected'))
 });
 
 // Setup server
