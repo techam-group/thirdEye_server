@@ -1,13 +1,15 @@
-from src.controller.services.delays import command_delays as delays
-from src.controller.services.drone_services import Drone
+from services.delays import command_delays as delays
+from services.drone_services import Drone
 from time import sleep
+import sys
 
 '''
 'takeoff', 'land', 'time?', 'speed?',
 '''
 
-command_list = ['command', 'battery?']
+command_list = ['command', 'battery?', 'takeoff', 'land']
 command_len = len(command_list)
+
 
 # Instantiate new Drone
 tello = Drone('Tello', command_len)
@@ -28,3 +30,4 @@ tello.close_sock()
 
 if __name__ == '__main__':
     print('We got called')
+    sys.stdout.flush()

@@ -1,9 +1,9 @@
-# _3rd_eyes services
+# _3rd_eyes servicess
 import socket
 
 
 class Drone:
-    def __init__(self, name="third_eye", count=0):
+    def __init__(self, name="Smart Eyes", count=1):
         """
         This is an instance of our Third_Eye drone. We are using Tello Drone for testing, but hopefully you should run
         this code with any drone out there.

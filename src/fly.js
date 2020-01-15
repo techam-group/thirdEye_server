@@ -1,11 +1,22 @@
-const app = require('express')();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const throttle = require('lodash/throttle');
-const { spawn } = require('child_process')
+const path = require('path');
+const { PythonShell } = require('python-shell');
 
-const commands = ['command', 'battery?', 'time?']
+const filePath = path.join(__dirname, '../pyDrone/main.py');
 
-const drone = spawn('python', ['./src/controller/main.py'])
+function sendMessage(command) {
+  return new Promise(async function (resolve, reject) {
+    let options = {
+      mode: 'text',
+      pythonOptions: ['-u'],
+      args: [command]
+    };
 
-drone.stdout.pipe(process.stdout)
+    const pyShell = new PythonShell(filePath, options);
+
+    await pyShell.on('message', function (msg) {
+      return resolve(msg)
+    });
+  })
+}
+
+module.exports = { sendMessage };
